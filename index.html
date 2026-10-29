@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerAI - Smart ATS Resume Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-icon">⚡</span>
+            <span class="logo-text">Career<span class="highlight">AI</span></span>
+        </div>
+        <div class="tag-status">● Model Ready (NLP v2.4)</div>
+    </header>
+
+    <!-- Hero Title -->
+    <section class="hero">
+        <h1>Smart ATS Resume & Job Matcher</h1>
+        <p>Analyze your resume against job descriptions using Natural Language Processing & Cosine Similarity.</p>
+    </section>
+
+    <!-- Main Grid -->
+    <main class="grid-container">
+        <!-- Input Panel -->
+        <div class="card glass-card">
+            <div class="card-header">
+                <h2>📄 Input Details</h2>
+                <button type="button" class="btn-sample" onclick="loadSampleData()">✨ Load Sample Resume</button>
+            </div>
+
+            <div class="form-group">
+                <label for="jobRole">Target Job Role</label>
+                <select id="jobRole" onchange="updateSuggestedSkills()">
+                    <option value="ai-ml">AI / Machine Learning Engineer</option>
+                    <option value="fullstack">Full Stack Web Developer</option>
+                    <option value="data-analyst">Data Analyst</option>
+                    <option value="cybersecurity">Cybersecurity Analyst</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="resumeText">Paste Resume Content (Text)</label>
+                <textarea id="resumeText" placeholder="Paste your resume work experience, skills, and education here..." rows="10"></textarea>
+            </div>
+
+            <button class="btn-analyze" onclick="analyzeResume()">🚀 Calculate ATS Score</button>
+        </div>
+
+        <!-- Output Analytics Panel -->
+        <div class="card glass-card" id="resultsPanel">
+            <h2>📊 ATS Match Analytics</h2>
+            
+            <div class="score-container">
+                <div class="circular-progress" id="progressRing">
+                    <span class="score-value" id="scoreText">0%</span>
+                </div>
+                <div class="score-meta">
+                    <h3 id="ratingTitle">Awaiting Input</h3>
+                    <p id="ratingSubtitle">Paste your resume to generate job match confidence.</p>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <!-- Skills Analysis -->
+            <div class="skills-section">
+                <h4>✅ Matched Keywords:</h4>
+                <div class="badges-wrapper" id="matchedSkills">
+                    <span class="empty-hint">None</span>
+                </div>
+
+                <h4 style="margin-top: 15px;">⚠️ Missing Crucial Skills:</h4>
+                <div class="badges-wrapper" id="missingSkills">
+                    <span class="empty-hint">None</span>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <!-- AI Feedback -->
+            <div class="feedback-box">
+                <h4>💡 AI Recommendations:</h4>
+                <ul id="feedbackList">
+                    <li>Add relevant keywords matching the target role.</li>
+                    <li>Ensure numerical metrics are included in experience points.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Built with NLP (Cosine Vectorizer) & Modern Web Standards | Hosted on Vercel</p>
+    </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
